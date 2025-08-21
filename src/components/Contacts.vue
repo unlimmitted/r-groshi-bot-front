@@ -1,5 +1,8 @@
 <template>
 	<div class="contacts-container">
+    <div class="page-title-container">
+      Контакты
+    </div>
 		<div
 			v-for="contact in contacts"
 			class="contact-frame"
@@ -14,7 +17,12 @@
 				</div>
 			</div>
 			<div class="contact-action-container">
-				<button class="contact-action-btn">
+        <button
+            class="contact-action-btn contact-new-debt"
+        >
+          <CirclePlus/>
+        </button>
+				<button class="contact-action-btn contact-history-btn">
 					<ClipboardClock/>
 				</button>
 				<button
@@ -31,10 +39,11 @@
 import {defineComponent} from 'vue'
 import {ClipboardClock} from 'lucide-vue-next';
 import {Trash2} from 'lucide-vue-next';
+import {CirclePlus} from 'lucide-vue-next';
 
 export default defineComponent({
 	name: "Contacts",
-	components: {ClipboardClock, Trash: Trash2},
+	components: {ClipboardClock, Trash: Trash2, CirclePlus},
 	data: () => ({
 		contacts: [
 			{
@@ -56,19 +65,63 @@ export default defineComponent({
 				telegramUser: "@test_user",
 				telegramFirstName: "Тест",
 				telegramLastName: "Тест"
-			}
+			},
+      {
+        telegramUser: "@test_user",
+        telegramFirstName: "Тест",
+        telegramLastName: "Тест"
+      },
+      {
+        telegramUser: "@test_user",
+        telegramFirstName: "Тест",
+        telegramLastName: "Тест"
+      },
+      {
+        telegramUser: "@test_user",
+        telegramFirstName: "Тест",
+        telegramLastName: "Тест"
+      }
 		]
-	})
+	}),
+  methods: {
+    showRemoveModal() {
+
+    },
+    removeContact() {
+
+    }
+  }
 })
 </script>
 
 <style scoped>
+.page-title-container {
+  position: sticky;
+  top: 0;
+  background-color: white;
+}
 .contact-username {
 	color: #7f7fff;
 	font-weight: bold;
 }
 .contact-remove-btn {
 	background-color: #ff4f4f;
+}
+
+.contact-history-btn {
+  background-color: #d3d3d3;
+}
+
+.contact-history-btn:hover {
+  background-color: #b3b3b3;
+}
+
+.contact-new-debt {
+  background-color: #81ff7c;
+}
+
+.contact-new-debt:hover {
+  background-color: #50ff47;
 }
 
 .contact-remove-btn:hover {
@@ -111,5 +164,7 @@ export default defineComponent({
 	display: flex;
 	flex-direction: column;
 	gap: 5px;
+  max-height: 500px;
+  overflow-y: scroll;
 }
 </style>

@@ -7,6 +7,14 @@ const router = createRouter({
         {
             path: '/contacts',
             component: () => import('@/components/Contacts.vue'),
+        },
+        {
+            path: '/debts',
+            component: () => import('@/components/Debts.vue'),
+        },
+        {
+            path: '/new-duty',
+            component: () => import('@/components/NewDuty.vue'),
         }
     ]
 });
